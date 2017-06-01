@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>DirectMemory源码分析 | Home3k&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近对cache相关进行了调研，看了一下off-heap cache DirectMemory源码，对其进行如下梳理：源码路径：https://github.com/raffaeleguidi/DirectMemory ###引 Java cache通常的做法是通过缓存对象报错在heap，通过一定的持久化机制保存在disk。为了防止缓存对象被gc，通常用弱引用等wrap一下。 考虑到heap容量，">
+<meta name="keywords" content="Cache,DirectMemory">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DirectMemory源码分析">
+<meta property="og:url" content="http://home3k.me/2012/09/06/Direct-memory/index.html">
+<meta property="og:site_name" content="Home3k&#39;s blog">
+<meta property="og:description" content="最近对cache相关进行了调研，看了一下off-heap cache DirectMemory源码，对其进行如下梳理：源码路径：https://github.com/raffaeleguidi/DirectMemory ###引 Java cache通常的做法是通过缓存对象报错在heap，通过一定的持久化机制保存在disk。为了防止缓存对象被gc，通常用弱引用等wrap一下。 考虑到heap容量，">
+<meta property="og:image" content="http://home3k-blog.qiniudn.com/Direct-Memory-Code.png">
+<meta property="og:updated_time" content="2017-06-01T02:11:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DirectMemory源码分析">
+<meta name="twitter:description" content="最近对cache相关进行了调研，看了一下off-heap cache DirectMemory源码，对其进行如下梳理：源码路径：https://github.com/raffaeleguidi/DirectMemory ###引 Java cache通常的做法是通过缓存对象报错在heap，通过一定的持久化机制保存在disk。为了防止缓存对象被gc，通常用弱引用等wrap一下。 考虑到heap容量，">
+<meta name="twitter:image" content="http://home3k-blog.qiniudn.com/Direct-Memory-Code.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Home3k&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="img/logo.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="img/logo.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">home3k</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">写写，想想</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="http://github.com/home3k" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/sukani" title="weibo">weibo</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/home3k" title="twitter">twitter</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/home3k" title="zhihu">zhihu</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/home3k" title="facebook">facebook</a>
+					        
+								<a class="douban" target="_blank" href="https://www.douban.com/people/home3k" title="douban">douban</a>
+					        
+								<a class="mail" target="_blank" href="mailto:home3k@gmail.com" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Blog/" style="font-size: 14px;">Blog</a> <a href="/tags/CV/" style="font-size: 10px;">CV</a> <a href="/tags/Cache/" style="font-size: 12px;">Cache</a> <a href="/tags/DirectMemory/" style="font-size: 10px;">DirectMemory</a> <a href="/tags/Distributed-System/" style="font-size: 10px;">Distributed System</a> <a href="/tags/EnumSet/" style="font-size: 10px;">EnumSet</a> <a href="/tags/False-Sharing/" style="font-size: 10px;">False Sharing</a> <a href="/tags/G1/" style="font-size: 10px;">G1</a> <a href="/tags/GC/" style="font-size: 10px;">GC</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JBlooming/" style="font-size: 10px;">JBlooming</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/Java-NIO/" style="font-size: 10px;">Java NIO</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Plan/" style="font-size: 10px;">Plan</a> <a href="/tags/Raywenderlich/" style="font-size: 10px;">Raywenderlich</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/Struts/" style="font-size: 16px;">Struts</a> <a href="/tags/Vert-x/" style="font-size: 10px;">Vert.x</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/voc-dpm/" style="font-size: 10px;">voc-dpm</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/思想/" style="font-size: 10px;">思想</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计/" style="font-size: 10px;">设计</a> <a href="/tags/读书比较/" style="font-size: 10px;">读书比较</a> <a href="/tags/转载/" style="font-size: 12px;">转载</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a> <a href="/tags/音乐/" style="font-size: 12px;">音乐</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">2010年从中科院计算所毕业,加入百度ECOM,经历了ALB.KASEM.FC,最终于2014年11月投入移动医疗创业.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">home3k</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="img/logo.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">home3k</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">写写，想想</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://github.com/home3k" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/sukani" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/home3k" title="twitter">twitter</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/home3k" title="zhihu">zhihu</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/home3k" title="facebook">facebook</a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/home3k" title="douban">douban</a>
+			        
+						<a class="mail" target="_blank" href="mailto:home3k@gmail.com" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Direct-memory" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2012/09/06/Direct-memory/" class="article-date">
+  	<time datetime="2012-09-06T08:34:48.000Z" itemprop="datePublished">2012-09-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DirectMemory源码分析
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cache/">Cache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DirectMemory/">DirectMemory</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近对cache相关进行了调研，看了一下off-heap cache DirectMemory源码，对其进行如下梳理：<br>源码路径：<a href="https://github.com/raffaeleguidi/DirectMemory" target="_blank" rel="external">https://github.com/raffaeleguidi/DirectMemory</a><br><br></p>
+<p>###引</p>
+<p>Java cache通常的做法是通过缓存对象报错在heap，通过一定的持久化机制保存在disk。为了防止缓存对象被gc，通常用弱引用等wrap一下。</p>
+<p>考虑到heap容量，缓存达到一定的容量必然会发生gc(full)，由于full gc的STW，当heap容量达到10g以上时的pause time几乎是无法容忍的。</p>
+<p>为了防止gc带来的性能问题，部分cache系统开始使用off-heap机制，通过对堆外内存的自主管理，防止额外的性能问题。这里面比较典型的是ehcache被terracotta收购后推出的BigMemory(<a href="http://www.ehcache.org/documentation/user-guide/bigmemory" target="_blank" rel="external">http://www.ehcache.org/documentation/user-guide/bigmemory</a>)</p>
+<p>根据terracotta测试，BigMemory在350G+的场景下，表现良好。</p>
+<p>由于BigMemory不开源，有个开源版的DirectMemory，实现跟其比较类似。<br><br></p>
+<p>###DirectMemory</p>
+<p>DirectMemory代码结构比较简单：</p>
+<center><img src="http://home3k-blog.qiniudn.com/Direct-Memory-Code.png" alt="DirectMemory代码结构"></center>
+
+<p>下面结合其源码及数据的put操作，对其进行介绍：<br><br></p>
+<p>####Cache</p>
+<p>Cache作为入口，它通过ConcurrentMap 维护了String-&gt;Pointer，该Map的作用，后面会有介绍。该map通过google guava框架的MapMaker创建(可以方便的进行超时事件等)</p>
+<p>Cache作为DirectMemory的入口，暴露了缓存操作的大部分接口，如put retrieve free等</p>
+<p>需要指出的是，为了防止cache实例进入heap，cache的创建，属性同时通过static创建的。这也导致Cache在同一个JVM中是singleton的，无法根据需求创建多个cache</p>
+<p>Cache层对对象的序列化是通过serialization包下的序列化器进行的，默认采用的是ProtoStuff。</p>
+<p>下面是其put操作代码，从代码可以看到，Cache层主要通过调用memory包下的MemoryManager相应接口，进行cache的各种操作。同时操作后更新其本层Map<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Pointer <span class="title">putByteArray</span> <span class="params">(String key, <span class="keyword">byte</span>[] payload, <span class="keyword">int</span> expiresIn)</span> </span>&#123;</div><div class="line">      Pointer ptr = MemoryManager. store(payload, expiresIn);</div><div class="line">       map.put(key, ptr);</div><div class="line">       <span class="keyword">return</span> ptr;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><br></p>
+<p>####MemoryManager</p>
+<p>MemoryManager维护了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;OffHeapMemoryBuffer&gt; buffers = <span class="keyword">new</span> Vector&lt;OffHeapMemoryBuffer&gt;();</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> OffHeapMemoryBuffer activeBuffer = <span class="keyword">null</span>;</div></pre></td></tr></table></figure></p>
+<p>activeBuffer即为当前buffer，如果当前buffer满了，则跳到buffers的下一个buffer中，这些buffer在buffers中，很显然，通过对buffer的分片，可以较好的提高并发度。</p>
+<p>下面的代码是MemoryManager进行store操作的过程，里面用很明显的逻辑进行了切（分）片操作。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Pointer <span class="title">store</span><span class="params">(<span class="keyword">byte</span>[] payload, <span class="keyword">int</span> expiresIn)</span> </span>&#123;</div><div class="line">      Pointer p = activeBuffer .store(payload, expiresIn);</div><div class="line">       <span class="keyword">if</span> (p == <span class="keyword">null</span>) &#123;</div><div class="line">             <span class="keyword">if</span> (activeBuffer.bufferNumber+<span class="number">1</span> == buffers.size()) &#123;</div><div class="line">                   <span class="keyword">return</span> <span class="keyword">null</span> ;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                   <span class="comment">// try next buffer</span></div><div class="line">                   activeBuffer = buffers.get(activeBuffer.bufferNumber+<span class="number">1</span>);</div><div class="line">                  p = activeBuffer .store(payload, expiresIn);</div><div class="line">            &#125;</div><div class="line">      &#125;</div><div class="line">       <span class="keyword">return</span> p;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>MemoryManager中维持的Buffer是OffHeapMemoryBuffer。<br><br></p>
+<p>####OffHeapMemoryBuffer</p>
+<p>OffHeapMemoryBuffer是off-heap写入的核心组件，其核心为一个<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">protected</span> ByteBuffer buffer ;</div></pre></td></tr></table></figure></p>
+<p>通过<code>ByteBuffer.allocateDirect(capacity)</code>，生成的DirectByteBuffer。作为NIO提供的Buffer，它可以更高效的进行off-heap操作。</p>
+<p>为了更高效的进行buffer读写，它提供了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> List&lt;Pointer&gt; pointers = <span class="keyword">new</span> ArrayList&lt;Pointer&gt;();。</div></pre></td></tr></table></figure></p>
+<p>对于Pointer对象，其核心字段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="keyword">int</span> start ;  <span class="comment">//buffer的开始位置</span></div><div class="line"> <span class="keyword">public</span> <span class="keyword">int</span> end ;    <span class="comment">//buffer的结束位置</span></div><div class="line"> <span class="keyword">public</span> <span class="keyword">boolean</span> free ; <span class="comment">//pointer是否可用</span></div><div class="line"> <span class="keyword">public</span> <span class="keyword">int</span> bufferNumber ; <span class="comment">//所属的buffer number</span></div><div class="line">.....</div></pre></td></tr></table></figure></p>
+<p>从本质上讲，它标识了一个buffer分片。通过将数据存储在这些细粒度分片上，可以更好的进行数据获取，并可以围绕key进行必要的操作，例如：Cache中包含一个key-Pointer的ConcurrentHashMap，这样在进行retrieve或update操作时，可以通过key先获得Pointer，然后可以通过pointer快速地对buffer进行操作。</p>
+<p>初始化时，Pointer为buffer大小。每次store的时候，先查找是否有free的Pointer，如果存在，执行slice，将原来的pointer切分出一块数据大小的新的pointer，封装pointer属性，然后slice buffer，并忘buffer里写数据。同时将报错数据的pointer放入到pointers中。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> Pointer <span class="title">store</span><span class="params">(<span class="keyword">byte</span>[] payload, <span class="keyword">long</span> expiresIn, <span class="keyword">long</span> expires)</span> </span>&#123;</div><div class="line">       Pointer goodOne = firstMatch(payload. length);</div><div class="line">       </div><div class="line">        <span class="keyword">if</span> (goodOne == <span class="keyword">null</span> ) &#123;</div><div class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"did not find a suitable buffer"</span>);</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       Pointer fresh = slice(goodOne, payload. length);</div><div class="line"></div><div class="line"></div><div class="line">       fresh. created = System.currentTimeMillis();</div><div class="line">        <span class="keyword">if</span> (expiresIn &gt; <span class="number">0</span>) &#123;</div><div class="line">             fresh. expiresIn = expiresIn;</div><div class="line">             fresh. expires = <span class="number">0</span>;</div><div class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (expires &gt; <span class="number">0</span>) &#123;</div><div class="line">             fresh. expiresIn = <span class="number">0</span>;</div><div class="line">             fresh. expires = expires;</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       fresh. free = <span class="keyword">false</span> ;</div><div class="line">        used.addAndGet(payload.length );</div><div class="line">       ByteBuffer buf = buffer.slice();</div><div class="line">       buf.position(fresh. start);</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">             buf.put(payload);</div><div class="line">       &#125; <span class="keyword">catch</span> (BufferOverflowException e) &#123;</div><div class="line">              <span class="comment">// RpG not convincing - let's fix it later</span></div><div class="line">             goodOne. start = fresh.start ;</div><div class="line">             goodOne. end = buffer .limit();</div><div class="line">              <span class="keyword">return</span> <span class="keyword">null</span> ;</div><div class="line">       &#125;</div><div class="line">        pointers.add(fresh);</div><div class="line">        <span class="keyword">return</span> fresh;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p><br></p>
+<p>###其他</p>
+<ol>
+<li>从MemoryManager store操作代码可以看到，当store操作时，如果当前buffer空间不足时，直接进行换切片操作，显然如果数据非常大时，OffHeapMemoryBuffer存在空间浪费。同时纵观其代码，其内存管理比较粗，目前基本只涉及过期处理，LFU策略等。Pointer空间释放后，也没有必要的合并操作。内存空间浪费应该是个问题。</li>
+<li>key过期处理时，对Pointer进行查找时，在设计上采用了JoSQL框架，通过SQL方式获得Pointer，代码比较明晰。</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2012/11/08/Vertx/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          初始Vert.x
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/06/27/False-sharing/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">伪共享</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Direct-memory" data-title="DirectMemory源码分析" data-url="http://home3k.me/2012/09/06/Direct-memory/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"home3k"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2010-2021 home3k
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
