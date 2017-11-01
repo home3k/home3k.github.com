@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Blog/" style="font-size: 14px;">Blog</a> <a href="/tags/CV/" style="font-size: 10px;">CV</a> <a href="/tags/Cache/" style="font-size: 12px;">Cache</a> <a href="/tags/DirectMemory/" style="font-size: 10px;">DirectMemory</a> <a href="/tags/Distributed-System/" style="font-size: 10px;">Distributed System</a> <a href="/tags/EnumSet/" style="font-size: 10px;">EnumSet</a> <a href="/tags/False-Sharing/" style="font-size: 10px;">False Sharing</a> <a href="/tags/G1/" style="font-size: 10px;">G1</a> <a href="/tags/GC/" style="font-size: 10px;">GC</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JBlooming/" style="font-size: 10px;">JBlooming</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/Java-NIO/" style="font-size: 10px;">Java NIO</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Plan/" style="font-size: 10px;">Plan</a> <a href="/tags/Raywenderlich/" style="font-size: 10px;">Raywenderlich</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/Struts/" style="font-size: 16px;">Struts</a> <a href="/tags/Vert-x/" style="font-size: 10px;">Vert.x</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/voc-dpm/" style="font-size: 10px;">voc-dpm</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/思想/" style="font-size: 10px;">思想</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计/" style="font-size: 10px;">设计</a> <a href="/tags/读书比较/" style="font-size: 10px;">读书比较</a> <a href="/tags/转载/" style="font-size: 12px;">转载</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a> <a href="/tags/音乐/" style="font-size: 12px;">音乐</a>
+						<a href="/tags/Blog/" style="font-size: 14px;">Blog</a> <a href="/tags/CV/" style="font-size: 10px;">CV</a> <a href="/tags/Cache/" style="font-size: 12px;">Cache</a> <a href="/tags/DirectMemory/" style="font-size: 10px;">DirectMemory</a> <a href="/tags/Distributed-System/" style="font-size: 12px;">Distributed System</a> <a href="/tags/EnumSet/" style="font-size: 10px;">EnumSet</a> <a href="/tags/False-Sharing/" style="font-size: 10px;">False Sharing</a> <a href="/tags/G1/" style="font-size: 10px;">G1</a> <a href="/tags/GC/" style="font-size: 10px;">GC</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JBlooming/" style="font-size: 10px;">JBlooming</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/Java-NIO/" style="font-size: 10px;">Java NIO</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Plan/" style="font-size: 10px;">Plan</a> <a href="/tags/Raywenderlich/" style="font-size: 10px;">Raywenderlich</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/Struts/" style="font-size: 16px;">Struts</a> <a href="/tags/Vert-x/" style="font-size: 10px;">Vert.x</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/voc-dpm/" style="font-size: 10px;">voc-dpm</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/并发/" style="font-size: 10px;">并发</a> <a href="/tags/思想/" style="font-size: 10px;">思想</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计/" style="font-size: 10px;">设计</a> <a href="/tags/读书比较/" style="font-size: 10px;">读书比较</a> <a href="/tags/转载/" style="font-size: 12px;">转载</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a> <a href="/tags/音乐/" style="font-size: 12px;">音乐</a>
 					</div>
 				</section>
 				
@@ -196,6 +196,286 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-G1-gc" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2011/12/20/G1-gc/" class="article-date">
+  	<time datetime="2011-12-20T09:37:52.000Z" itemprop="datePublished">2011-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2011/12/20/G1-gc/">JAVA 7 G1收集器调研</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在看虚拟机垃圾收集，看到了JAVA 7 G1收集器的相关内容，特深入调研了下。</p>
+<p>G1收集器全称Garbage-First Garbage Collector。是在Java 6 Update 14中引入，旨在取代CMS收集器的一种新型收集器。在Java 6中只是试验性的引入，因各种原因没有正式引入。Java 7开始，其被正式引入。</p>
+<p>作为一个server-style回收器，其具有如下属性：</p>
+<h1 id="1-并行和并发"><a href="#1-并行和并发" class="headerlink" title="1. 并行和并发"></a>1. 并行和并发</h1><p>众所周知，目前所有的GC(无论是serial,parallel及近年来广泛使用的CMS)均存在暂停时间问题，所谓的暂停时间是由于GC的“stop-the-world” 机制（这个机制简称STW，即，在执行垃圾收集算法时，Java应用程序的其他所有除了垃圾收集帮助器线程之外的线程都被挂起）。而G1 可以从最新的硬件中获得并行的能力。它能够使用所有可用的CPU（CPU多核，硬件多线程，等）来加速它的STW暂停时间。虽然其并行机制在CMS中已有了一定的实现（即周期性的进行并发标记[concurrent marking phase]），但G1采用了新的实现方式。</p>
+<p>该机制与G1新的堆内存管理机制相关。与其他GC收集器不同，在G1中，对象的新生代和老一代上并没有在物理上分隔开，而是把一个连续的堆内存拆分成了几个相同大小的区域。新生对象和老对象都会被放在一系列可能不连续的区域中。之所以这样做，就是为了让G1可以更灵活地移动老对象所占用的资源给新的对象。G1中的内存收集会发生 “疏散暂停”，当内存从一系列区域开始回收时，这些区域所引用的对象会被疏散到另一些区域中，这样，会有一整块的内存来重新被申请（其思想跟垃圾收集算法中的复制算法很类似）。疏散会发生整个程序的暂停，但“疏散”这些内存可以被并行运行，这正是G1的并发阶段做的事情。</p>
+<h1 id="2-分代处理"><a href="#2-分代处理" class="headerlink" title="2. 分代处理"></a>2. 分代处理</h1><p>与其它的HotSpot 垃圾回收器一样，G1 也是分代的。即它在处理新分配的对象（年轻代）和已经生存了一段时间的对象（年老代）时会不同，它会更多地考虑一些新创建的对象实例，因为越新创建的就越有最大的可能性被回收，老对象只是偶尔访问一下。对于大多数的Java应用来说，这个机制可以极大地提高回收效率。</p>
+<h1 id="3-紧凑内存（碎片整理"><a href="#3-紧凑内存（碎片整理" class="headerlink" title="3. 紧凑内存（碎片整理"></a>3. 紧凑内存（碎片整理</h1><p>与CMS收集器不同，G1 会对堆进行内存整理。压缩可以消除潜在的内存碎片的问题，这样程序就可以更长时间的平滑运行。</p>
+<h1 id="4-预见性"><a href="#4-预见性" class="headerlink" title="4. 预见性"></a>4. 预见性</h1><p>G1 比起 CMS 来有更多的预见性。这个主要还是用来消除内存碎片的问题。内存的碎片少了，STW的暂停时间也会被减少。</p>
+<p>目前G1仍然还在试验阶段，使用下面两个参数可以打开G1机制：</p>
+<p><code>-XX:+UnlockExperimentalVMOptions -XX:+UseG1GC</code></p>
+<p>目前G1收集器还存在如下问题：</p>
+<ol>
+<li>G1不支持 JVM TI JMX等工具，由于相当数量的JVM管理及监控工具都是基于这两个服务的，因此基于G1很多工具无法正确使用。</li>
+<li>G1不支持增量永生代收集。因此，在应用卸载类时，无法进行收集。</li>
+<li>STW的暂停时间不太稳定，与CMS相比，时好时坏。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/G1/">G1</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GC/">GC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-It-is-running-out" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2011/01/27/It-is-running-out/" class="article-date">
+  	<time datetime="2011-01-26T16:20:00.000Z" itemprop="datePublished">2011-01-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2011/01/27/It-is-running-out/">It is running out</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I think i’m drowning<br>asphyxiated<br>i wanna break this spell<br>that you’ve created </p>
+<p>you’re something evil<br>a contradiction<br>i wanna finish the game<br>and kill the friction </p>
+<p>But you will be the death of me<br>you are just the death of me</p>
+<p>bury it<br>i wanna bury it<br>i wanna smother it<br>i wanna murder it </p>
+<p>I hope it is running out<br>and I hope the time is running out</p>
+<p>But I can’t push it underground<br>I can’t stop it screaming out </p>
+<p>I wanted freedom<br>but I’m restricted<br>I tried to give it up<br>but I’m addicted </p>
+<p>Maybe you know i’m trapped<br>sense of elation<br>I know you’ll never dream of<br>breaking this fixation </p>
+<p>you will squeeze the life out of me<br>til it run out.</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/随笔/">随笔</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Find-a-home" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2010/05/25/Find-a-home/" class="article-date">
+  	<time datetime="2010-05-25T11:14:00.000Z" itemprop="datePublished">2010-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2010/05/25/Find-a-home/">Find a home</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=0&sid=1769582690&mode=js"></script>
+
+<p>Find A Home (New Forest Shaker)<br>　　　　　　　　　　　　　　Delays</p>
+<p>One more year of digging here<br>And we’re alight in heaven; we’re alight in heaven<br>If we bare the stones and stares<br>Then we’re alight in heaven, we’re alight in heaven, </p>
+<p>Mother says to hold our tongues; we are the chosen ones,<br>And we answer to no one, </p>
+<p>Same dream I’m always having,<br>Like shivering, shivering, shivering… </p>
+<p>Find a home amongst the trees,<br>Bend your branches over me,<br>Find a home, defy the freeze,<br>Dance around the rosaries… </p>
+<p>Faith alone must clear this snow<br>Or we’ll have doubted heaven; we’ll have doubted heaven<br>It’s finisterre for dancing bears<br>If we have doubted heaven; we have doubted heaven </p>
+<p>Everyone I left behind, they think I left my mind under Mesmer, sola fide<br>Same dream I’m always having,<br>Like shivering, shivering, shivering… </p>
+<p>Find a home amongst the trees,<br>Bend your branches over me,<br>Find a home; defy the freeze, and glow, </p>
+<p>Find a home… </p>
+<p>Oh I can row, I can row, I can row back home,<br>Or we can lay, we can lay, we can lay in Sway, </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/音乐/">音乐</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/音乐/">音乐</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Exogenesis-Symphony-Cross-Pollination" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2010/03/04/Exogenesis-Symphony-Cross-Pollination/" class="article-date">
+  	<time datetime="2010-03-04T12:26:43.000Z" itemprop="datePublished">2010-03-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2010/03/04/Exogenesis-Symphony-Cross-Pollination/">Exogenesis Symphony, Pt. 2 Cross-Pollination</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=0&sid=1769075178&mode=js"></script>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">package  music.album.the.resistance;</div><div class="line"></div><div class="line">import  foobar;</div><div class="line">import  last.fm;</div><div class="line"></div><div class="line">/**</div><div class="line">*  编程需要交流</div><div class="line">* @author Muse</div><div class="line">* @author Sukani</div><div class="line">**/</div><div class="line">public class Exogenesis Symphony, Pt. 2 Cross-Pollination &#123;</div><div class="line">    </div><div class="line">    public void sing（) &#123;</div><div class="line">      /*我们不受周围人的影响*/</div><div class="line">      Rise above the crowds;</div><div class="line">      /*我们的充满辐射的环境下工作*/</div><div class="line">      Wade through toxic clouds;</div><div class="line">      /*我们要打破欧美软件列强的垄断*/</div><div class="line">      Breach the outer sphere;</div><div class="line">      /*我们虽然没有把握, 但是相互交流或许能提高*/</div><div class="line">      The edge of all our fears rest with you;</div><div class="line">      /*我们需要交流!*/</div><div class="line">      We are counting on you;</div><div class="line">      /*我们需要交流!*/</div><div class="line">      It's up to you;</div><div class="line">      /*赶紧把代码共享出来!*/</div><div class="line">      Spread our codes to the stars;</div><div class="line">      /*交流才是王道*/</div><div class="line">      You must rescue us all;</div><div class="line">      /*赶紧把代码共享出来!*/</div><div class="line">      Spread our codes to the stars;</div><div class="line">      /*交流才是王道*/</div><div class="line">      You must rescue us all;</div><div class="line">      /*告诉大家*/</div><div class="line">      Tell us;</div><div class="line">      /*你这段代码倒是是干什么用的!*/</div><div class="line">      Tell us your final wish;</div><div class="line">      /*说不明白就别想回去!*/</div><div class="line">      Now we know you can never return;</div><div class="line">      /*告诉大家*/</div><div class="line">      Tell us;</div><div class="line">      /*你这段代码倒是是干什么用的!*/</div><div class="line">      Tell us your final wish;</div><div class="line">      /*我们要Open-Source, 与全球的同行分享!*/</div><div class="line">      We will tell it to the world;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  public void afterSing() &#123;</div><div class="line">    if (action.equals("闲的!")) &#123;</div><div class="line">     System.out.println("也是被论文逼得.");</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/音乐/">音乐</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/随笔/">随笔</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Go" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -651,301 +931,9 @@
 
 
   
-    <article id="post-Repent" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2007/12/22/Repent/" class="article-date">
-  	<time datetime="2007-12-21T19:01:11.000Z" itemprop="datePublished">2007-12-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2007/12/22/Repent/">回头</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>时间就如同留声机，读写头走得越快，声音就越是刺耳。</p>
-<p>总是在试图掌控时间，总在想，活着就是要思考，要回溯，即使白驹过隙，抽时间想一想临近的过往也能活的坦然，如果过往充实，则嘉勉而行，如果过往碌碌，则鞭策而行，于是，一切都尽在掌握中。听起来很美，却总是输得一无是处，因为一切的一切都是基于那个赤裸裸的前提。但是生活充实就好？</p>
-<p>一切还是要从那堆文档说起，压抑了许久，思绪都快压霉了。</p>
-<p>每天总是以文档开幕，并以不了的文档闭幕。</p>
-<p>昨日依旧。</p>
-<p>晚上下课回来就在写，一直写到1点，一直写到身体受不了。</p>
-<p>1点多爬上床便开始用手机看电子书，郭小四的&lt;&lt;悲伤逆流成河&gt;&gt;，一看看到三点半。矫情的文字，单调的线索，不顾亲情的纵生……抄袭男奢靡生活后的闲暇文字也竟看了几个深夜，看得我郁闷顺流入海。想想大四也经常这么打法日子，周遭静悄悄，浅色的光把文字映入睡眼，直到睡眼朦胧……只是那时不用考虑近在咫尺的明天，因为明天和今天没有什么两样，如今，文字已不允许映入眼帘，因为现实不允许眼睛入眠。</p>
-<p>一觉睡到9：00，早晨与晚上无二，文档已然成了全部。11：30，火箭的比赛，适逢午饭时间，无二，午饭抛到云霄之外。两个加时，一直打到了3：00，无二，一如既往的输，唯一的好处是，输总是让人消沉，消沉容易让人饥饿感全无，于是文档一写写到5：00。5：20，阿远、箱子来叫上自习，犹豫了一会，最终还是决定不去，与其坐在自习室胡思乱想，不如在宿舍三心二意。</p>
-<p>吃过饭，继续写，一直写到11：00，写得身心俱疲，于是走到超市买了点吃的，买了瓶可乐。可乐，记得在家时，电脑前总是放一杯可乐，午夜后总是喜欢品一口，爸妈睡觉前的一句话总是“别睡得太晚。”，但又总是在出去逛时，带回来一桶2L可乐，爱与爱总是交织不清。没有什么要买的，却在超市瞎逛了20分钟，仿佛把超市当作清新的野外一般，头昏脑胀的只想深呼吸。可是，宿舍总是要回，文档也总是要写，此刻，可乐成了一种寄托……</p>
-<p>又是一个无眠的深夜，有如上周一般，窗外路灯廖然，没有行人，没有车灯，那一抹暗黄俨然成为一种摆设，斜对面的C座还有两颗两点，也许他们也跟我一样？</p>
-<p>夜很深，深的漫无边际，甚至伸到了不远的明天。</p>
-<p>明天。又是忙碌的一天，8：00就要起，去物业那排火车票……</p>
-<p>以前总是不理解镜头里的人为了火车票而争得头破血流，现在才有所了解，每一个在异乡漂流者，总有一抹心酸的回忆，而家是他们支撑信念的唯一。</p>
-<p>我想回家，可是还要静等一个月。</p>
-<p>一个月，不长不短，可是如果每天都像近日一样，那还不如时光静止。清楚的记得，每次回家爸妈的第一句话总是“怎么瘦成这样了，赶紧在家补补……”，伴随着的是关切的眼神，眼神驻留了许久。我不知道现在比刚来的时候瘦了多少，面容萧条了多少，唯一可以肯定的是，现在与他们相见，眼神会驻留更久……最近，家人总是发短信问什么时候放假，我每次都说还不一定，还不知道考完试老板让不让走，其实，早就了解到老板肯定让走，而且明天也打算订23号的票，为什么每次都说不一定，连自己都不知道……</p>
-<p>文档写到2：30就知道，今天肯定还是写不完了，折磨依旧，明天还会睡这么晚吗？</p>
-<p>明天是什么样，我不知道，后天是什么样，我不愿去想，也许我已经等不到后天……</p>
-<p>绝望。人在绝望时总是寻求一种解脱，正如&lt;&lt;悲伤逆流成河&gt;&gt;结局一般，可是自己的解脱却让自己的亲人一辈子得不到解脱，人不能这么自私，因为宿命的十字架已经刻的很深，人不是为了自己而活着。生活的意义到底在于什么？不顾一切的向前？安逸祥和的天伦？我选择后者，至少今晚如此……</p>
-<p>亲情最重要，身体更重要，因为经验表明，身体的沉沦是亲情的热焰迸发的根源……</p>
-<p>但是，我感觉，身体在一点一点的下沉，意志在一点点的消沉，仿佛在走远……</p>
-<p>回头。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Learning-the-future" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2007/12/11/Learning-the-future/" class="article-date">
-  	<time datetime="2007-12-11T14:44:50.000Z" itemprop="datePublished">2007-12-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2007/12/11/Learning-the-future/">学习遥遥无期</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>结果真的很重要。</p>
-<p>6点，颠吧颠吧，跑去上自习，找到一无人教室，大喜。8点半，发现自习室竟然还是自己一人，失望，于是颠吧颠吧跑回宿舍，一路上不时的安慰自己，有个Turing机读书报告，还要做，还要做……正如某日，在宿舍呆到失望，于是，8点半颠吧颠吧跑去自习，发现自习室人竟是如此之多，望众人奋笔疾书之神态，观自己萧索颓败之鬼态，不免若有所思，此时进去不免遭人鄙视，于是又颠吧颠吧的跑回宿舍，不同的是20min前的失望之情已是荡然无存……</p>
-<p>有点讽刺。上午听罗大牛开小差似的讲到21世纪的教育，说到了“终身学习；以学生为中心；教育的国际化。”，听得为之一振，并在那一瞬间，立誓要好好学习，把至少要把有限几年时光放到正经事儿上；然后罗导又开大差似的讲到了外语学习，讲到他学习外语时的铁血柔情，并不时的把外语教学体制鄙视一番，想到这些年外语学习的举步维艰，不由得志上心头…… 于是一个个美妙的模糊的场景映入眼帘，看得我心旷神怡。</p>
-<p>说白了就是个Vision跟Action的关系问题。不禁再次感慨罗导，不经意间他已经把两者的关系阐述的清晰异常，他提出的Use-Case driven不仅是SDP的principle，同时也是生活的principle，如果一切Vision都可以规格化，可以文档化，实践和反思工作岂不是简单异常？可是我这辈子最讨厌写文档…… 于是规划总是遥遥无期。</p>
-<p>我是回来写Turing报告的，又冒出了一堆废话，活脱脱的weirdo。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Eager-for-porcine-snow" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2007/12/10/Eager-for-porcine-snow/" class="article-date">
-  	<time datetime="2007-12-10T14:13:47.000Z" itemprop="datePublished">2007-12-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2007/12/10/Eager-for-porcine-snow/">Eager For Porcine Snow</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大自然总是向往着平衡，过高过低，过浓过稀，过冷过热，过静过吵，都不是其本意。人亦是如此，内心火热就渴望着适度的降温，因为如果持续火热就意味着升华，化学的升华，升华到消失不见……</p>
-<p>可是这终究不是好的解决办法，温度只能影响体温，而体温与心脏总是相隔很远，即使影响，也只是微不足道，如果火热的过分剧烈，温度也只能反复而已，波峰，波谷，而且后面的波谷甚至比前面的波峰还要高出一大截，将物理学中波的本意抛在脑后。</p>
-<p>于是，有人提出从根源入手，毕竟万物追溯到本源都平凡的让人难以想象。可惜追溯的过程却是如此的复杂，以至于我们总是不经意的停在一个中间的节点就以为看清了事情的本质。</p>
-<p>正如芸芸众生一般，无聊的我也总是在闲暇之际若有所思的追溯。幸运的是我追溯到了中间节点也追溯到了本源，不幸的是中间节点是如此的显而易见，本源却是如此顽固的难以改变。</p>
-<p>火热，终究是有原因的，而且原因很是简单，正如wize所说“问问你自己，你比谁都清楚。”可惜清楚是一码事，而清楚的结果却不是那么清楚，正如本文的行文表达，晦涩并且无趣。</p>
-<p>恩，比谁都清楚，但是清楚并不意味着平衡，因为奇怪的是，越是清楚，内心的温度却越是火热，于是追溯成了唯一的手段。</p>
-<p>追溯确实是一个良好的学习过程，不经意间竟学到了许多许多。我清晰的看到大脑右半球遍布着无数的几何形状，无尽的感情和数不清的想像出的场景，事实清晰的表明，自己一直生活在胶结的情感之中，不能自拔，有人说“左撇子实际上是人类中的弱者”，对此深信不疑，因为如果人只能靠想象度日，那还有什么生活可言，碧落？也许特例而已，正如痴等了许久的中国队也能偶尔去趟世界杯一般。可这只是零星的一片，更大一片却在内心安静的躺着。Carl Jung说过：有一类人，他把他的心理能量向内释放，兴趣所在不是外部世界而是自己的内心世界，即他自己的观点、思想、情感和行为；而Freud更是对这类人给出了一个精确定义：具有精神病的倾向的人。大师就是大师，结论总是一针见血，令人敬仰，可是有一点他们却并未提及，那就是这类人是的行动极端Solid，即使内心的情感盘旋许久，意念坚定不移，他的行动却是如此的豁然，如此的Solid，以致于每当事后回头看看，都会看着自己那张失败的面孔情不自禁地笑，恩，嘲笑。乐观的人总是倡导一种环境改变论，正如Mom所说“如果小时候多带你出去就好了。”“出去锻炼几年就好了”，每当听到这种论调，我总是深信不疑，然后事后唏嘘不已，因为经验使我深信环境改变不了一个顽固的基因，因为它总是在试图改变环境抑或寻觅适合的环境。我在想是不是每个人冥冥中为一个神所支配，而支配我的那个神恰巧在榻安睡，恩，睡觉确实是最好的解释，因为熟睡的人总是沉浸在梦里，即使在梦里想做一件事，回到现实他也很难去做，因为他实在记不得梦里到底发生了什么。这类人讨厌经历斗转星移，也许星座也是一直很好的解释，也许我应该早来一天，那样的话，还会总写这种无聊的文字？天知道，那个熟睡的神更是知道，因为历史总是寻觅着一种巧合：也许他正巧是在23号那天睡下，因为之前的一个月他玩的太疯了……</p>
-<p>人不能总凭空思索，如果没有任何结论总会有所不妥，Plato? 有人把他秉为思想家，有人却把他叫做YY男，当然，我是后者，也许只有我这么称呼……但是结论是什么？抓到本质后，通常会让人一头雾水，因为从逻辑学的角度，本质是剥掉了一切外衣一切修饰的东西，没有修饰支撑，人们通常不知所云，因为人的行动都是修饰后的情感驱使。但是有一点确是显而易见的，本质虽不能改变，却可以添加修饰，修饰多了可能本质就变了，正如肥仔所说“尝试改变嘛~~”。不过仔细想想，我确实是在修饰，过去在修饰，现在也在修饰。过去修饰着真实的感受，修饰表现在生活的点滴中。MSN，QQ经常弄上三个号挂着，一个公共，一个私人，一个自己……，04年底就在写blog，写到05年，就全删了，溢满的情绪孤芳自赏?空洞无趣。现在也是在修饰，至少第三个号基本上不登陆了，原来放在幽闭角落的文竟也会发在bokee，bokee也会留着QQ上；Space曾经用过，后来发现能提醒就没再用，所以用另外一个号建了一个Space，俨然是一大进步。只是每次一小步，也许乌龟可以战胜兔子，但是，生活不会偷懒，因为生活不是兔子。但是结论是什么？把生活改造成兔子，还是把乌龟转化为兔子？我不傻，因为我不是兔子，但是一切都需要时间，就向人生规划一般……，纵使你看不到，我也一直在改变，一直在明确……</p>
-<p>说了这么多，不知道自己在说什么，正像自己一天到晚不知做什么一样。一边写日志，一边写Boss要求的总结报告，一边看Turing机要求的论文，看来左右脑确实同等重要。只可惜后两者都有Deadline，而前者却连Milestone也没有，也许真该好好规划一番，至少有些东西是需要好好Check的，不然整个Life <cycle>就是Crash了。突然感觉人生像极了软件工程，而我现在只停留在Requirement阶段，纵使内心有着数不尽的Scenario，却无法将Use case 付诸于Coding，甚至Design也没有，Deployment，Running? 过分遥远，不想也罢……</cycle></p>
-<p>今天是北京的第一场雪，喜欢在风雪中无遮盖的独行，纵使曾经被Dinger bs为“这哥们脑子进水了，傻冒。”，也执着不悔，湿漉漉，凉嗖嗖的感觉，真好。可是，为什么雪不来的大一些呢？</p>
-<p>PS: 再写就比总结报告的字数多了。读完竟想删，不过敲了半天也不容易，也许能意味着一些东西，留着。</p>
-<p>PS: 简约使人进步，空洞使人退步。为什么一直在退步……</p>
-<p>PS: 总结终于写完了。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-How-long" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2007/12/08/How-long/" class="article-date">
-  	<time datetime="2007-12-08T15:44:37.000Z" itemprop="datePublished">2007-12-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2007/12/08/How-long/">还要多久？</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>生活就是Sisyphus的“奋斗”史，周而复始，单调无常。然而情节发展总能推理出一群逆天者，他们不甘于现状，他永远背对着常理，有人把他称之为勇者，有人则称之为逆子。在Sisyphus的山上也有这类人，他们被人们看做是虚度年华者，他们的行动总容易被人们所概括，并将之用一个优美的词语所代替，那就是颓废。</p>
-<p>环顾四野，这类人不在少数，有人颓废得直白，有人颓废的隐讳，有人颓废的豁达，有人颓废的颓废，有人知道自己正在颓废，有人却在笑看别人的颓废。很不幸，我竟全是后者。</p>
-<p>人总是在风暴之后，大脑才能无限清醒，仿佛被洗涤了一般。于是，我看清了一切。</p>
-<p>新的环境总是能让人改变很多，思想的盲从总是能让人萧条许多，所以很多人有了沉沦的理由，并且堕落得理直气壮，我竟又是其中的一个。到现在为止，没有看清前方的一切，并且还假借思考而放置所有，虚伪得可悲，虚伪得可叹。</p>
-<p>现在的我，总是喜欢顺着一条路走下去，即使周遭尽是阴霾，我要看着它们做作地笑，笑得分不清方向，笑得分不清是非，还要笑多久？笑到肌无力，还是笑到脑死亡？</p>
-<p>镜子前的自己完全如暑假般萧索，混完一天，然后留下入梦前的的几分钟用作忏悔，然后明日依旧，忏悔依旧。可如今，时空紧缩，我却连忏悔的时间也腾不出，于是颓废占据了全部，没有动力，没有思考，没有了曾经的片刻的信仰。就像青春逝去般的可怕，总是在消失的一瞬间让人感到绝望。</p>
-<p>总是试图用理智来指引行走的方向，可是又总是在某一瞬间，欲望背叛了理智，然后等到那一瞬间消逝后，再用理智提醒自己需要理智，周而复始，永无宁日。</p>
-<p>掰开手指算了算，三个月已经过去了，还要多久？三年，抑或五载？再或者潦倒的一辈子？</p>
-<p>总是尝试着改变，但却始终处于尝试中，或者说处于规划尝试中。规划的心满意足，于是在心满意足的回到了过往，于是规划了很久，失望了更久。</p>
-<p>怎么了？迷惑费解充沛心智，曾经是一个理智的人，任何事都要仔细地揣度一番，然后在适当的场合做着适当的决定，于是一切一如想象，走得平稳，走得踏实，走得很接近既定的方向。如今，表情依旧，内心却不如昨。浮躁，奢华，纵欲占据了四野之三，整个人如同驱壳一般，能够行走到任何方向，但是指引他的却是遍布体内的Evil。</p>
-<p>垮了，看不到任何希望。喜欢在迷离的和弦中思索，于是思绪被卷入音律中，顺着它的旋律走，消失在茫茫的尽头。我有时在想，我现在听的是BritPop，如果有一天我改听Gospel，那改如何？</p>
-<p>整整编了一周的程序，历史遗留的程序，身心俱疲。传说中的爆炸性新闻后，自己突然清醒了许多。于是一口气写了很多，唯一不明白的是我的路在哪里，学计算机愁煞人，越法不想学这个专业，虽然有时编个程序，研究技术有些许意思。可仔细推敲，那都是心智超群的支配者玩弄的游戏，泛泛之辈涉足的话，只会身心俱疲。</p>
-<p>平淡真好。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 </div>
