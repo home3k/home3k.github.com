@@ -241,7 +241,7 @@
 <p>前三个api自不必说，基本就是常规的kv操作；对于test_and_set, 由于数据存在版本，client端可以基于version做conditionalPut、conditionalDel等操作，从而实现test_and_set语义；</p>
 <p>比如<code>conditionalDelete(key, colname, v)</code>，只有当前数据版本为v时，才进行delete操作。</p>
 <h4 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h4><p>数据分布层面，Spinnaker基于key-range进行分布；一个range内的数据集的多个replica集合叫cohort，cohort基于chained-declustering方式进行replica逻辑关联。</p>
-<p>上图就是一个典型的数据分布架构；</p>
+<p>上图就是一个典型的数据分布架构，为了系统简化直接基于Zookeeper来做meta-data管理；</p>
 <p><img src="http://oyqik46el.bkt.clouddn.com/WechatIMG21.jpeg" alt="Cluster"></p>
 <p>对于单个节点，节点通过模块话组织进行数据commit, membership管理, election等动作，具体如下图:</p>
 <p><img src="http://oyqik46el.bkt.clouddn.com/WechatIMG24.jpeg" alt="Node"></p>
