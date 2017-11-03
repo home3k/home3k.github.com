@@ -4,19 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>分布式一致性简史 | Home3k&#39;s blog</title>
+  <title>Spinnaker | Home3k&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="来自 https://betathoughts.blogspot.com/2007/06/brief-history-of-consensus-2pc-and.html 第一个一致性问题是从 Lamport 大神的 1978年Time论文指出，虽然他没有明确提出consensus or agreement的概念， 但他提出了分布式状态机的概念（复制状态机， RSM）， 一组确定状态机，从相同初始状">
-<meta name="keywords" content="分布式,一致性">
+  <meta name="description" content="home3k&apos;s tech blog. 写写，想想">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分布式一致性简史">
-<meta property="og:url" content="http://home3k.me/2017/07/27/brief-of-consensus/index.html">
+<meta property="og:title" content="Spinnaker">
+<meta property="og:url" content="http://home3k.me/2017/11/03/Spinnaker/index.html">
 <meta property="og:site_name" content="Home3k&#39;s blog">
-<meta property="og:description" content="来自 https://betathoughts.blogspot.com/2007/06/brief-history-of-consensus-2pc-and.html 第一个一致性问题是从 Lamport 大神的 1978年Time论文指出，虽然他没有明确提出consensus or agreement的概念， 但他提出了分布式状态机的概念（复制状态机， RSM）， 一组确定状态机，从相同初始状">
-<meta property="og:updated_time" content="2017-11-02T02:47:32.119Z">
+<meta property="og:description" content="home3k&apos;s tech blog. 写写，想想">
+<meta property="og:updated_time" content="2017-11-03T09:00:06.207Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分布式一致性简史">
-<meta name="twitter:description" content="来自 https://betathoughts.blogspot.com/2007/06/brief-history-of-consensus-2pc-and.html 第一个一致性问题是从 Lamport 大神的 1978年Time论文指出，虽然他没有明确提出consensus or agreement的概念， 但他提出了分布式状态机的概念（复制状态机， RSM）， 一组确定状态机，从相同初始状">
+<meta name="twitter:title" content="Spinnaker">
+<meta name="twitter:description" content="home3k&apos;s tech blog. 写写，想想">
   
     <link rel="alternative" href="/atom.xml" title="Home3k&#39;s blog" type="application/atom+xml">
   
@@ -197,11 +196,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-brief-of-consensus" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Spinnaker" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/27/brief-of-consensus/" class="article-date">
-  	<time datetime="2017-07-27T04:21:35.000Z" itemprop="datePublished">2017-07-27</time>
+      <a href="/2017/11/03/Spinnaker/" class="article-date">
+  	<time datetime="2017-11-03T09:00:06.000Z" itemprop="datePublished">2017-11-03</time>
 </a>
     </div>
   
@@ -214,7 +213,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      分布式一致性简史
+      Spinnaker
     </h1>
   
 
@@ -222,15 +221,7 @@
       
       <div class="article-info article-info-post">
         
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/一致性/">一致性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li></ul>
-	</div>
-
         
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/分布式/">分布式</a>
-	</div>
-
 
         <div class="clearfix"></div>
       </div>
@@ -238,33 +229,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>来自 <a href="https://betathoughts.blogspot.com/2007/06/brief-history-of-consensus-2pc-and.html" target="_blank" rel="external">https://betathoughts.blogspot.com/2007/06/brief-history-of-consensus-2pc-and.html</a></p>
-<p>第一个一致性问题是从 Lamport 大神的 1978年Time论文指出，虽然他没有明确提出consensus or agreement的概念， 但他提出了分布式状态机的概念（复制状态机， RSM）， <strong>一组确定状态机，从相同初始状态开始，确保他们以相同顺序处理相同消息，可以确保每个状态机都是其他的状态机的副本。</strong> 关键是，哪个消息是下一个需要处理的消息，达成一致， 这就是一致性问题。</p>
-<p>1979年 Jim Gray描述了2PC，但是2PC会Block，随后，Dale Skeen在1981年提出3PC, 但是找到好的3PC算法花了近25年。</p>
-<p>1985年 著名的FLP Impossiblility被提出。 即一个异步系统即使只有一个进程出错，分布式一致性也不可能达到。跟海森堡的测不准原理有些神识。此时 Consensus变成，<strong>让一系列处理器在一个value上达成共识的问题。</strong> 核心是没法区分，是低速执行，还是终止。</p>
-<p>这时，人们意识到分布式算法有两个非常重要的属性， <strong>safety</strong> <strong>liveness</strong> 前者：坏的事情不会发生，后者：好的事情最终会发生。</p>
-<p>虽然，2pc保证safety，但是liveness非常不好。</p>
-<p>同时：分布式系统被分为同步，异步两种， 同步看做异步的特例， 它的消息传输时间有上界。</p>
-<p>1982年 Byzantine Generals Problem： 进程会说谎。</p>
-<p>1986年，一致性和事务聚在一起。 最好的一致性算法是Byzantine Generals，但是代价太高，根部无法用于事务处理。</p>
-<p>1987年 Jim Gray， 指出分布式事务是一个新的一致性问题，不是bg的退化版本，分布式事务是uniform consensus（2010年） 所有进程必须在一个value上达成一致，即使是那些出错进程。</p>
-<p>进入90年代，曙光来临：</p>
-<ul>
-<li><p>1990年 Lamport提出 Paxos</p>
-</li>
-<li><p>1996年 Lampson引用Paxos</p>
-</li>
-<li><p>2001年 Lamport 发表 Paxos Made Simple</p>
-</li>
-</ul>
-<p>Paxos及Paxos-like的出现，大有一统分布式一致性的趋势。</p>
-<p>而针对分布式系统的同步异步问题，人们发现：系统简单划分同步异步有些宽泛</p>
-<p>1988年 Dwork Lynch Stockmeyer定义了部分同步系统：</p>
-<blockquote>
-<p>进程已给点bound的速率运行，消息传输时间有界，但边界的实际取值无法得知<br>处理速度和传输的边界一直，只是在未来某个未知时间开始。</p>
-</blockquote>
-<p>2005年 Lamport Jim Gray将Paxos应用的分布式事务提交中， 用于容错，解决block问题。进行了整体融合。</p>
-
+        
       
     </div>
     
@@ -273,18 +238,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/11/03/Spinnaker/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Spinnaker
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/07/18/Distributed-System/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">聊聊分布式</div>
+    <a href="/2017/07/27/brief-of-consensus/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">分布式一致性简史</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -330,7 +286,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="brief-of-consensus" data-title="分布式一致性简史" data-url="http://home3k.me/2017/07/27/brief-of-consensus/"></div>
+	<div class="ds-thread" data-thread-key="Spinnaker" data-title="Spinnaker" data-url="http://home3k.me/2017/11/03/Spinnaker/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

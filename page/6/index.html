@@ -197,6 +197,88 @@
 
       <div class="body-wrap">
   
+    <article id="post-Struts-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2007/01/11/Struts-2/" class="article-date">
+  	<time datetime="2007-01-11T15:19:58.000Z" itemprop="datePublished">2007-01-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/01/11/Struts-2/">Struts学习随笔（2）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>飞思struts.chapter2终于搞定。</p>
+<p>异样的晕，入门就是难.</p>
+<p>对于Hello app，有以下随笔：</p>
+<ol>
+<li>视图包括两个组件：<br>a. 一个jsp文件，Hello.jsp。<br>b. 一个ActionForm Bean，HelloForm Bean</li>
+<li>JSP文件没有任何java代码，使用了许多struts客户化标签（联系视图组件跟其他组件的纽带）。</li>
+<li>至少也要知道struts  html bean logic标签库的基本用法吧。</li>
+<li><code>&lt;bean:message\&gt;</code>标签输出文本内容，来自于Resource Bundle，每个Resource Bundle对应一个或多个本地化消息资源文件。采用“消息key/消息文本”方式。</li>
+<li>HelloForm extends ActionForm 并覆写 validate（） reset（）方法 ps：其实就是简单的javabean＋上述两个方法。</li>
+<li>数据验证包括：表单验证，业务逻辑验证。前者由validate搞定，后者需要由Action来搞定。</li>
+<li>控制器组件由ActionServlet 和 Action组成。ActionServlet 框架自带，Action需要扩展，HelloAction extends Action。</li>
+<li>表单验证通过后，执行Action 的 execute（）方法。返回ActionForward对象，包含了请求转发的路径信息。</li>
+<li>MessageResources m＝getResources（request） 封装 Resource Bundle 本地化信息。<br><code>m.getMessage(String key)</code></li>
+<li>Action常将数据保存在request session范围内，以便向视图组件传递信息。</li>
+<li>模型组件常包含一个业务方法saveToPersistentStore（），（想到了Hibernate。。）</li>
+<li>struts的key常量常存在Constants.java中。提高Action的独立性。</li>
+<li>web.xml对ActionServlet进行配置。并声明使用的struts标签库。</li>
+<li>struts-config.xml将struts划分的组件组装起来。</li>
+<li>应用程序发布。</li>
+<li>超级无敌具体的执行流程！（超晕）</li>
+<li>擦汗。。。。 这一章好晕。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Struts/">Struts</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Struts/">Struts</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Struts-1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
