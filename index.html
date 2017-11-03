@@ -223,7 +223,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="引"><a href="#引" class="headerlink" title="引"></a>引</h4><p>Spinnaker是Linkedin Team在2011年VLDB发布的一个k/v存储服务，其设计实现基本上就是典型的paxos/raft的rsm(replicated-state-machine)的典型应用，系统实现思路很清晰，比较值得一读。</p>
+        <h4 id="引"><a href="#引" class="headerlink" title="引"></a>引</h4><p>Spinnaker是IBM &amp; Linkedin Team在2011年VLDB发布的一个k/v存储服务，其设计实现基本上就是典型的paxos/raft的rsm(replicated-state-machine)的典型应用，系统实现思路很清晰，比较值得一读。</p>
 <p>Spinnaker主要针对一个datacenter内的数据同步，考虑到datacenter内的网络分区概率极低，Spinnaker严格上说是一个CA系统。它采用3-way replica，跟传统的最终一致性的存储系统做对比，Spinnaker在读操作上甚至要更快，而在写操作上，它也只是有5-10%的性能损失。</p>
 <h4 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h4><p>Spinnaker的数据模型及API跟Bigtable及Yahoo PNUTS非常类似，数据基于row及table组织，基本是如下的pattern:</p>
 <blockquote>
