@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>论文-spinnaker | Home3k&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="引Spinnaker是IBM &amp;amp; Linkedin Team在2011年VLDB发布的一个k/v存储服务，其设计实现基本上就是典型的paxos/raft的rsm(replicated-state-machine)的典型应用，系统实现思路很清晰，比较值得一读。 Spinnaker主要针对一个datacenter内的数据同步，考虑到datacenter内的网络分区概率极低，Spinnaker严">
@@ -13,15 +13,16 @@
 <meta property="og:url" content="http://home3k.me/2017/09/06/Spinnaker/index.html">
 <meta property="og:site_name" content="Home3k&#39;s blog">
 <meta property="og:description" content="引Spinnaker是IBM &amp;amp; Linkedin Team在2011年VLDB发布的一个k/v存储服务，其设计实现基本上就是典型的paxos/raft的rsm(replicated-state-machine)的典型应用，系统实现思路很清晰，比较值得一读。 Spinnaker主要针对一个datacenter内的数据同步，考虑到datacenter内的网络分区概率极低，Spinnaker严">
-<meta property="og:image" content="http://oyqik46el.bkt.clouddn.com/WechatIMG23.jpeg">
-<meta property="og:image" content="http://oyqik46el.bkt.clouddn.com/WechatIMG21.jpeg">
-<meta property="og:image" content="http://oyqik46el.bkt.clouddn.com/WechatIMG24.jpeg">
-<meta property="og:image" content="http://oyqik46el.bkt.clouddn.com/WechatIMG22.jpeg">
-<meta property="og:updated_time" content="2017-11-03T09:15:35.020Z">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://home3k.cn-bj.ufileos.com/WechatIMG23.jpeg">
+<meta property="og:image" content="http://home3k.cn-bj.ufileos.com/WechatIMG21.jpeg">
+<meta property="og:image" content="http://home3k.cn-bj.ufileos.com/WechatIMG24.jpeg">
+<meta property="og:image" content="http://home3k.cn-bj.ufileos.com/WechatIMG22.jpeg">
+<meta property="og:updated_time" content="2019-04-29T11:24:13.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文-spinnaker">
 <meta name="twitter:description" content="引Spinnaker是IBM &amp;amp; Linkedin Team在2011年VLDB发布的一个k/v存储服务，其设计实现基本上就是典型的paxos/raft的rsm(replicated-state-machine)的典型应用，系统实现思路很清晰，比较值得一读。 Spinnaker主要针对一个datacenter内的数据同步，考虑到datacenter内的网络分区概率极低，Spinnaker严">
-<meta name="twitter:image" content="http://oyqik46el.bkt.clouddn.com/WechatIMG23.jpeg">
+<meta name="twitter:image" content="http://home3k.cn-bj.ufileos.com/WechatIMG23.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Home3k&#39;s blog" type="application/atom+xml">
   
@@ -30,7 +31,7 @@
   
   <link rel="stylesheet" href="/css/style.css">
 </head>
-
+</html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -126,7 +127,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Blog/" style="font-size: 14px;">Blog</a> <a href="/tags/CV/" style="font-size: 10px;">CV</a> <a href="/tags/Cache/" style="font-size: 12px;">Cache</a> <a href="/tags/DirectMemory/" style="font-size: 10px;">DirectMemory</a> <a href="/tags/Distributed-System/" style="font-size: 12px;">Distributed System</a> <a href="/tags/EnumSet/" style="font-size: 10px;">EnumSet</a> <a href="/tags/False-Sharing/" style="font-size: 10px;">False Sharing</a> <a href="/tags/G1/" style="font-size: 10px;">G1</a> <a href="/tags/GC/" style="font-size: 10px;">GC</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JBlooming/" style="font-size: 10px;">JBlooming</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/Java-NIO/" style="font-size: 10px;">Java NIO</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Plan/" style="font-size: 10px;">Plan</a> <a href="/tags/Raywenderlich/" style="font-size: 10px;">Raywenderlich</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Struts/" style="font-size: 16px;">Struts</a> <a href="/tags/Vert-x/" style="font-size: 10px;">Vert.x</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/voc-dpm/" style="font-size: 10px;">voc-dpm</a> <a href="/tags/一致性/" style="font-size: 10px;">一致性</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/分布式系统/" style="font-size: 10px;">分布式系统</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/并发/" style="font-size: 10px;">并发</a> <a href="/tags/思想/" style="font-size: 10px;">思想</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/论文，Spinnaker/" style="font-size: 10px;">论文，Spinnaker</a> <a href="/tags/设计/" style="font-size: 10px;">设计</a> <a href="/tags/读书比较/" style="font-size: 10px;">读书比较</a> <a href="/tags/转载/" style="font-size: 12px;">转载</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a> <a href="/tags/音乐/" style="font-size: 12px;">音乐</a>
+						<a href="/tags/12-Factor/" style="font-size: 10px;">12-Factor</a> <a href="/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/tags/Blog/" style="font-size: 14px;">Blog</a> <a href="/tags/CV/" style="font-size: 10px;">CV</a> <a href="/tags/Cache/" style="font-size: 12px;">Cache</a> <a href="/tags/Cloud-Native/" style="font-size: 12px;">Cloud Native</a> <a href="/tags/DirectMemory/" style="font-size: 10px;">DirectMemory</a> <a href="/tags/Distributed-System/" style="font-size: 14px;">Distributed System</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EnumSet/" style="font-size: 10px;">EnumSet</a> <a href="/tags/False-Sharing/" style="font-size: 10px;">False Sharing</a> <a href="/tags/G1/" style="font-size: 10px;">G1</a> <a href="/tags/GC/" style="font-size: 10px;">GC</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JBlooming/" style="font-size: 10px;">JBlooming</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/Java-NIO/" style="font-size: 10px;">Java NIO</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Plan/" style="font-size: 14px;">Plan</a> <a href="/tags/Raywenderlich/" style="font-size: 10px;">Raywenderlich</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Struts/" style="font-size: 16px;">Struts</a> <a href="/tags/Vert-x/" style="font-size: 10px;">Vert.x</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/voc-dpm/" style="font-size: 10px;">voc-dpm</a> <a href="/tags/一致性/" style="font-size: 10px;">一致性</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/分布式系统/" style="font-size: 10px;">分布式系统</a> <a href="/tags/创业/" style="font-size: 10px;">创业</a> <a href="/tags/复杂度/" style="font-size: 10px;">复杂度</a> <a href="/tags/并发/" style="font-size: 10px;">并发</a> <a href="/tags/思想/" style="font-size: 10px;">思想</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/论文，Spinnaker/" style="font-size: 10px;">论文，Spinnaker</a> <a href="/tags/设计/" style="font-size: 10px;">设计</a> <a href="/tags/读书比较/" style="font-size: 10px;">读书比较</a> <a href="/tags/转载/" style="font-size: 12px;">转载</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a> <a href="/tags/音乐/" style="font-size: 12px;">音乐</a>
 					</div>
 				</section>
 				
@@ -212,7 +213,7 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+      <input type="hidden" class="isFancy">
     
     
       <header class="article-header">
@@ -249,7 +250,7 @@
 <blockquote>
 <p>row  key -&gt; { col name : col val, ……}</p>
 </blockquote>
-<p><img src="http://oyqik46el.bkt.clouddn.com/WechatIMG23.jpeg" alt="Data Model"></p>
+<p><img src="http://home3k.cn-bj.ufileos.com/WechatIMG23.jpeg" alt="Data Model"></p>
 <p>作为k/v存储，其数据格式显然也没有做预设的schema，基于col name &amp; col val来进行schema的变更；由于其数据模型里没有column family，其查询便利性上较之Bigtable还是有些差别。</p>
 <p>基本APIs</p>
 <ul>
@@ -262,16 +263,16 @@
 <p>比如<code>conditionalDelete(key, colname, v)</code>，只有当前数据版本为v时，才进行delete操作。</p>
 <h4 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h4><p>数据分布层面，Spinnaker基于key-range进行分布；一个range内的数据集的多个replica集合叫cohort，cohort基于chained-declustering方式进行replica逻辑关联。</p>
 <p>上图就是一个典型的数据分布架构，为了系统简化直接基于Zookeeper来做meta-data管理；</p>
-<p><img src="http://oyqik46el.bkt.clouddn.com/WechatIMG21.jpeg" alt="Cluster"></p>
+<p><img src="http://home3k.cn-bj.ufileos.com/WechatIMG21.jpeg" alt="Cluster"></p>
 <p>对于单个节点，节点通过模块话组织进行数据commit, membership管理, election等动作，具体如下图:</p>
-<p><img src="http://oyqik46el.bkt.clouddn.com/WechatIMG24.jpeg" alt="Node"></p>
+<p><img src="http://home3k.cn-bj.ufileos.com/WechatIMG24.jpeg" alt="Node"></p>
 <h4 id="Replication-Protocol"><a href="#Replication-Protocol" class="headerlink" title="Replication Protocol"></a>Replication Protocol</h4><p>Spinnaker协议跟Raft, Zab比较类似，采用基于选举的paxos-like方案，其协议分为两个阶段: </p>
 <ul>
 <li>p1: leader election</li>
 <li>p2: quorum (using multi-paxos)</li>
 </ul>
 <p>简单来说就是，首先选出cohort leader(leader crash会重新选举), 然后log发送给cohort leader，leader基于multi-paxos协议进行quorum的log一致性同步（注意此时节点未做commit，也就是未commit到RSM中）。 多数派节点ack后，leader commit然后返回client，之后发出async commit操作通知节点进行commit操作。</p>
-<p><img src="http://oyqik46el.bkt.clouddn.com/WechatIMG22.jpeg" alt="Protocal"></p>
+<p><img src="http://home3k.cn-bj.ufileos.com/WechatIMG22.jpeg" alt="Protocal"></p>
 <p>显然在这个时序里，leader返回之后时间点，client-&gt;get()，到follower节点是可能拿到过期数据的，而leader节点是可以拿到最新数据。这就是Spinnnaker里的timeline consistency。</p>
 <h4 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h4><p>每个节点为所有的partition数据维护一个共享log(规避随机写问题)，类似write-ahead-log，确保数据的可恢复性。</p>
 <p>如果follower挂掉后又重新加入</p>
@@ -294,6 +295,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2017/11/25/Mesa/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          论文-Mesa
+        
+      </div>
+    </a>
   
   
     <a href="/2017/07/27/brief-of-consensus/" id="article-nav-older" class="article-nav-link-wrap">
