@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://dockone.io/uploads/article/20160718/7de6654b918e23b01e6dc592b3ec81a5.png">
 <meta property="og:image" content="http://dockone.io/uploads/article/20160718/4d383f911bcb786dd0b5afb1bc2df533.png">
 <meta property="og:image" content="http://dockone.io/uploads/article/20160718/4eb6d3ee319cb8125b32da6c929b7037.png">
-<meta property="og:updated_time" content="2019-05-09T06:20:03.818Z">
+<meta property="og:updated_time" content="2019-05-09T06:30:14.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="容器设计模式">
 <meta name="twitter:description" content="容器化引领了云原生风潮。在云原生生态下，容器是最原子的个体，云原生下的容器非常类似上个世纪80年代末OOP引领变革后的模块/组件，而90年代中期GoF引领的设计模式将OOP推向了一个新的高度。因此，基于容器的设计模式方法论也可以驱使分布式系统设计模式的进一步发展，这也是了解容器设计模式的重要所在。Google的容器设计模式的小论文，是对容器设计模式的一个梳理，其文中提到的几种模式。这些模式基本是多">
@@ -257,7 +257,7 @@
 <p>这里它又分为如下几种模式：</p>
 <h2 id="Sidecar-pattern"><a href="#Sidecar-pattern" class="headerlink" title="Sidecar pattern"></a>Sidecar pattern</h2><p>利用<strong>共享存储能力</strong>进行同一Pod内的容器协同。</p>
 <p><img src="http://dockone.io/uploads/article/20160718/b2df5950bcffa5384ba8b0fd38bbdefb.png" alt></p>
-<p>比如k8s官方示例中的tomcat容器和war包容器；业务应用容器和日志收集容器。</p>
+<p>比如<a href="https://github.com/kubernetes/examples/tree/master/staging/javaweb-tomcat-sidecar" target="_blank" rel="noopener">k8s官方示例</a>中的tomcat容器和war包容器；业务应用容器和日志收集容器。</p>
 <p>Sidecar模式是应用最广泛的一类模式，它进行了应用容器和工具容器的<strong>解耦</strong>，同时对主应用容器能力进行了扩展和增强。从而带来了如下好处：</p>
 <ul>
 <li>容器是<strong>资源分配</strong>的单元，拆分可以做更细粒度的分配;</li>

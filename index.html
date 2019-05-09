@@ -236,7 +236,7 @@
 <p>这里它又分为如下几种模式：</p>
 <h2 id="Sidecar-pattern"><a href="#Sidecar-pattern" class="headerlink" title="Sidecar pattern"></a>Sidecar pattern</h2><p>利用<strong>共享存储能力</strong>进行同一Pod内的容器协同。</p>
 <p><img src="http://dockone.io/uploads/article/20160718/b2df5950bcffa5384ba8b0fd38bbdefb.png" alt></p>
-<p>比如k8s官方示例中的tomcat容器和war包容器；业务应用容器和日志收集容器。</p>
+<p>比如<a href="https://github.com/kubernetes/examples/tree/master/staging/javaweb-tomcat-sidecar" target="_blank" rel="noopener">k8s官方示例</a>中的tomcat容器和war包容器；业务应用容器和日志收集容器。</p>
 <p>Sidecar模式是应用最广泛的一类模式，它进行了应用容器和工具容器的<strong>解耦</strong>，同时对主应用容器能力进行了扩展和增强。从而带来了如下好处：</p>
 <ul>
 <li>容器是<strong>资源分配</strong>的单元，拆分可以做更细粒度的分配;</li>
